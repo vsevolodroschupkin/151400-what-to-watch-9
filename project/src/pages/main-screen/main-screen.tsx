@@ -1,4 +1,5 @@
-import FilmCard from '../film-card/film-card';
+import FilmCard from '../../components/film-card/film-card';
+import Logo from '../../components/logo/logo';
 
 type Film = {
   id: number;
@@ -24,13 +25,7 @@ function MainScreen ({mainFilm:{title, date, genre}, films}: MainScreenProps):JS
         <h1 className="visually-hidden">WTW</h1>
 
         <header className="page-header film-card__head">
-          <div className="logo">
-            <a href="/" className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
+          {<Logo />}
 
           <ul className="user-block">
             <li className="user-block__item">
