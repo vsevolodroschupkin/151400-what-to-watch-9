@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import AddReviewScreen from '../../pages/add-review-screen/add-review-screen';
-import Error404 from '../../pages/error-404-screen/error-404-screen';
+import Error404Screen from '../../pages/error-404-screen/error-404-screen';
 import FilmScreen from '../../pages/film-screen/film-screen';
 import MainScreen from '../../pages/main-screen/main-screen';
 import MyListScreen from '../../pages/my-list-screen/my-list-screen';
@@ -36,7 +36,7 @@ function App({mainFilm, films}: AppScreenProps): JSX.Element {
           </PrivateRoute>
         }
         />
-        <Route path='*' element={<Error404 />} />
+        <Route path='*' element={<Error404Screen />} />
       </Routes>
     </BrowserRouter>
   );

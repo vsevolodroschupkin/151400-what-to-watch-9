@@ -1,45 +1,40 @@
 import Logo from '../../components/logo/logo';
+import { AppRoute } from '../../const';
+import { Link } from 'react-router-dom';
+import Footer from '../../components/footer/footer';
 
-function Error404(): JSX.Element {
+function Error404Screen(): JSX.Element {
   return (
-    <section className="film-card">
-      <div className="film-card__bg">
-        <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
-      </div>
-
-      <h1 className="visually-hidden">404</h1>
-
-      <header className="page-header film-card__head">
+    <div className="user-page">
+      <header className="page-header user-page__head">
         {<Logo />}
 
+        <h1 className="page-title user-page__title">404</h1>
+
+        <ul className="user-block">
+          <li className="user-block__item">
+            <div className="user-block__avatar">
+              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+            </div>
+          </li>
+          <li className="user-block__item">
+            <a href="/" className="user-block__link">Sign out</a>
+          </li>
+        </ul>
       </header>
 
-      <div className="film-card__wrap">
-        <div className="film-card__info">
-          <div className="film-card__poster">
-            <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
-          </div>
+      <section className="catalog">
+        <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <div className="film-card__desc">
-            <h2 className="film-card__title">404</h2>
-            <p className="film-card__meta">
-              <span className="film-card__genre">genre</span>
-              <span className="film-card__year">date</span>
-            </p>
-
-            <div className="film-card__buttons">
-              <button className="btn btn--play film-card__button" type="button">
-                <svg viewBox="0 0 19 19" width="19" height="19">
-                  <use xlinkHref="#play-s"></use>
-                </svg>
-                <span>Play</span>
-              </button>
-            </div>
-          </div>
+        <div className="catalog__films-list" style={{flexDirection: 'column'}}>
+          <p>Страница не найдена или не существует.</p>
+          <Link to={AppRoute.Main} className='logo__link' style={{display: 'block', width: 'auto', height: 'auto', padding: '10px 15px'}}>На главную</Link>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <Footer />
+    </div>
   );
 }
 
-export default Error404;
+export default Error404Screen;
