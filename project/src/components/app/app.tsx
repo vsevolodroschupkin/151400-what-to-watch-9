@@ -8,17 +8,11 @@ import MyListScreen from '../../pages/my-list-screen/my-list-screen';
 import PlayerScreen from '../../pages/player-screen/player-screen';
 import SingInScreen from '../../pages/sign-in-screen/sign-in-screen';
 import PrivateRoute from '../private-route/private-route';
-
-type Film = {
-  id: number;
-  title: string;
-  genre: string;
-  date: string;
-}
+import {Films, Film} from '../../types/film';
 
 type AppScreenProps = {
   mainFilm: Film;
-  films: Film[];
+  films: Films;
 };
 
 function App({mainFilm, films}: AppScreenProps): JSX.Element {
@@ -32,7 +26,7 @@ function App({mainFilm, films}: AppScreenProps): JSX.Element {
         <Route path={AppRoute.AddReview} element={<AddReviewScreen />} />
         <Route path={AppRoute.MyList} element={
           <PrivateRoute>
-            <MyListScreen />
+            <MyListScreen films={films}/>
           </PrivateRoute>
         }
         />

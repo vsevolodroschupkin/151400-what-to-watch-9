@@ -1,11 +1,31 @@
-function FilmCard ():JSX.Element {
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
+import { Film } from '../../types/film';
+
+
+type FilmCardProps = {
+  film: Film;
+  filmIdChangeHandler: (filmId : number) => void;
+}
+
+function FilmCard (props:FilmCardProps):JSX.Element {
+  const {film} = props;
+  const {previewImage, name, id} = film;
+  const {filmIdChangeHandler} = props;
+
+  const onMouseEnterHandler = () => filmIdChangeHandler(id);
+  const onMouseLeaveHandler = () => filmIdChangeHandler(0);
+
   return (
-    <article className="small-film-card catalog__films-card">
+    <article className="small-film-card catalog__films-card"
+      onMouseEnter = {onMouseEnterHandler}
+      onMouseLeave = {onMouseLeaveHandler}
+    >
       <div className="small-film-card__image">
-        <img src="img/no-country-for-old-men.jpg" alt="No Country for Old Men" width="280" height="175" />
+        <img src={previewImage} alt={name} width="280" height="175" />
       </div>
       <h3 className="small-film-card__title">
-        <a className="small-film-card__link" href="film-page.html">No Country for Old Men</a>
+        <Link to={`${AppRoute.Films}${id}`} className="small-film-card__link">{name}</Link>
       </h3>
     </article>
   );

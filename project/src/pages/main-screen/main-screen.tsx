@@ -1,26 +1,21 @@
-import FilmCard from '../../components/film-card/film-card';
+import FilmList from '../../components/film-list/film-list';
 import Footer from '../../components/footer/footer';
 import Logo from '../../components/logo/logo';
-
-type Film = {
-  id: number;
-  title: string;
-  genre: string;
-  date: string;
-}
+import {Films, Film} from '../../types/film';
 
 type MainScreenProps = {
   mainFilm : Film;
-  films: Film[];
+  films: Films;
 }
 
-function MainScreen ({mainFilm:{title, date, genre}, films}: MainScreenProps):JSX.Element {
+function MainScreen ({mainFilm, films}: MainScreenProps):JSX.Element {
+  const {name, genre, released, posterImage, backgroundImage} = mainFilm;
 
   return (
     <>
       <section className="film-card">
         <div className="film-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={backgroundImage} alt={name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -43,14 +38,14 @@ function MainScreen ({mainFilm:{title, date, genre}, films}: MainScreenProps):JS
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={posterImage} alt={`${name} poster`} width="218" height="327" />
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{title}</h2>
+              <h2 className="film-card__title">{name}</h2>
               <p className="film-card__meta">
                 <span className="film-card__genre">{genre}</span>
-                <span className="film-card__year">{date}</span>
+                <span className="film-card__year">{released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -108,9 +103,7 @@ function MainScreen ({mainFilm:{title, date, genre}, films}: MainScreenProps):JS
             </li>
           </ul>
 
-          <div className="catalog__films-list">
-            {films.map((it) => <FilmCard key={it.id}/>)}
-          </div>
+          <FilmList films={films}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
