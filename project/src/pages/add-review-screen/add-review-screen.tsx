@@ -1,6 +1,24 @@
+import { ChangeEvent, useState } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import Logo from '../../components/logo/logo';
+import { AppRoute } from '../../const';
+
 
 function AddReviewScreen(): JSX.Element {
+  const {id} = useParams();
+  const location = useLocation();
+  const [startValue, setStarValue] = useState(8);
+  const [comment, setComment] = useState('');
+
+  function commentChangeHandler({target}: ChangeEvent<HTMLTextAreaElement>):void {
+    const {value} = target;
+    setComment(value);
+  }
+
+  function starChangeHandler({target}: ChangeEvent<HTMLInputElement>):void {
+    const
+  }
+
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
@@ -16,10 +34,10 @@ function AddReviewScreen(): JSX.Element {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="film-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
+                <Link to={`${AppRoute.Films}${id}`} className="breadcrumbs__link">The Grand Budapest Hotel</Link>
               </li>
               <li className="breadcrumbs__item">
-                <a href="/" className="breadcrumbs__link">Add review</a>
+                <Link to={location} className="breadcrumbs__link">Add review</Link>
               </li>
             </ul>
           </nav>
@@ -78,7 +96,7 @@ function AddReviewScreen(): JSX.Element {
           </div>
 
           <div className="add-review__text">
-            <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text"></textarea>
+            <textarea onChange={commentChangeHandler} className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text" value={comment}></textarea>
             <div className="add-review__submit">
               <button className="add-review__btn" type="submit">Post</button>
             </div>
