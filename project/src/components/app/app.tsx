@@ -20,10 +20,10 @@ function App({mainFilm, films}: AppScreenProps): JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route index element={<MainScreen mainFilm={mainFilm} films={films}/>} />
-        <Route path={AppRoute.Film} element={<FilmScreen />} />
+        <Route path={AppRoute.Film} element={<FilmScreen film={mainFilm} similarFilms={films} />} />
         <Route path={AppRoute.Login} element={<SingInScreen />} />
         <Route path={AppRoute.Player} element={<PlayerScreen film={mainFilm}/>} />
-        <Route path={AppRoute.AddReview} element={<AddReviewScreen />} />
+        <Route path={AppRoute.AddReview} element={<AddReviewScreen film={mainFilm} />} />
         <Route path={AppRoute.MyList} element={
           <PrivateRoute>
             <MyListScreen films={films}/>

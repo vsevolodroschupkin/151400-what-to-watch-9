@@ -7,3 +7,5 @@ export enum AppRoute {
   AddReview = '/films/:id/review',
   Player = 'player/:id'
 }
+
+export const STARS_COUNT = 10;
