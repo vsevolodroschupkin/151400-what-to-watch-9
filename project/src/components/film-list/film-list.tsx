@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { SETTINGS } from '../../consts';
 import { Films } from '../../types/film';
 import FilmCard from '../film-card/film-card';
 
@@ -7,8 +8,7 @@ type FilmListProps = {
 };
 
 function FilmList({films}: FilmListProps):JSX.Element {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [stateFilmId, setStateFilmId] = useState(0);
+  const [, setStateFilmId] = useState(SETTINGS.FILMLIST_INITIAL_STATE);
 
   const filmIdChangeHandler = (filmId:number) => {
     setStateFilmId(filmId);

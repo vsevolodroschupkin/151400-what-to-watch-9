@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { AppRoute } from '../../consts';
 import AddReviewScreen from '../../pages/add-review-screen/add-review-screen';
 import Error404Screen from '../../pages/error-404-screen/error-404-screen';
 import FilmScreen from '../../pages/film-screen/film-screen';
@@ -20,11 +20,11 @@ function App({mainFilm, films}: AppScreenProps): JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route index element={<MainScreen mainFilm={mainFilm} films={films}/>} />
-        <Route path={AppRoute.Film} element={<FilmScreen film={mainFilm} similarFilms={films} />} />
-        <Route path={AppRoute.Login} element={<SingInScreen />} />
-        <Route path={AppRoute.Player} element={<PlayerScreen film={mainFilm}/>} />
-        <Route path={AppRoute.AddReview} element={<AddReviewScreen film={mainFilm} />} />
-        <Route path={AppRoute.MyList} element={
+        <Route path={AppRoute.FILM} element={<FilmScreen film={mainFilm} similarFilms={films} />} />
+        <Route path={AppRoute.LOGIN} element={<SingInScreen />} />
+        <Route path={AppRoute.PLAYER} element={<PlayerScreen film={mainFilm}/>} />
+        <Route path={AppRoute.ADD_REVIEW} element={<AddReviewScreen film={mainFilm} />} />
+        <Route path={AppRoute.MY_LIST} element={
           <PrivateRoute>
             <MyListScreen films={films}/>
           </PrivateRoute>

@@ -1,7 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import FilmList from '../../components/film-list/film-list';
 import Footer from '../../components/footer/footer';
 import Logo from '../../components/logo/logo';
 import UserBlock from '../../components/user-block/user-block';
+import { AppRoute } from '../../consts';
 import {Films, Film} from '../../types/film';
 
 type MainScreenProps = {
@@ -11,6 +13,7 @@ type MainScreenProps = {
 
 function MainScreen ({mainFilm, films}: MainScreenProps):JSX.Element {
   const {name, genre, released, posterImage, backgroundImage} = mainFilm;
+  const navigate = useNavigate();
 
   return (
     <>
@@ -40,7 +43,7 @@ function MainScreen ({mainFilm, films}: MainScreenProps):JSX.Element {
               </p>
 
               <div className="film-card__buttons">
-                <button className="btn btn--play film-card__button" type="button">
+                <button className="btn btn--play film-card__button" type="button" onClick={() => {navigate(AppRoute.PLAYER);}}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>

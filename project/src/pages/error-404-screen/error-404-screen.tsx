@@ -1,5 +1,5 @@
 import Logo from '../../components/logo/logo';
-import { AppRoute } from '../../const';
+import { AppRoute } from '../../consts';
 import { Link } from 'react-router-dom';
 import Footer from '../../components/footer/footer';
 import UserBlock from '../../components/user-block/user-block';
@@ -20,7 +20,7 @@ function Error404Screen(): JSX.Element {
 
         <div className="catalog__films-list" style={{flexDirection: 'column'}}>
           <p>Страница не найдена или не существует.</p>
-          <Link to={AppRoute.Main} className='logo__link' style={{display: 'block', width: 'auto', height: 'auto', padding: '10px 15px'}}>На главную</Link>
+          <Link to={AppRoute.MAIN} className='logo__link' style={{display: 'block', width: 'auto', height: 'auto', padding: '10px 15px'}}>На главную</Link>
         </div>
       </section>
 

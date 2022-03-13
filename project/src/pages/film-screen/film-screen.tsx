@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import FilmList from '../../components/film-list/film-list';
 import Footer from '../../components/footer/footer';
 import Logo from '../../components/logo/logo';
 import UserBlock from '../../components/user-block/user-block';
-import { AppRoute } from '../../const';
+import { AppRoute } from '../../consts';
 import { Film, Films } from '../../types/film';
 
 type FilmScreenProps = {
@@ -13,6 +13,7 @@ type FilmScreenProps = {
 
 function FilmScreen ({film, similarFilms}: FilmScreenProps): JSX.Element {
   const {backgroundImage, posterImage, name, genre, released, id, description, director, starring, rating, scoresCount} = film;
+  const navigate = useNavigate();
 
   return (
     <>
@@ -38,7 +39,7 @@ function FilmScreen ({film, similarFilms}: FilmScreenProps): JSX.Element {
               </p>
 
               <div className="film-card__buttons">
-                <button className="btn btn--play film-card__button" type="button">
+                <button className="btn btn--play film-card__button" type="button" onClick={() => {navigate(AppRoute.PLAYER);}}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
@@ -50,7 +51,7 @@ function FilmScreen ({film, similarFilms}: FilmScreenProps): JSX.Element {
                   </svg>
                   <span>My list</span>
                 </button>
-                <Link to={`${AppRoute.Films}${id}/review`} className="btn film-card__button">Add review</Link>
+                <Link to={`${AppRoute.FILMS}${id}/review`} className="btn film-card__button">Add review</Link>
               </div>
             </div>
           </div>

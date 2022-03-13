@@ -2,7 +2,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import AddReviewForm from '../../components/add-review-form/add-review-form';
 import Logo from '../../components/logo/logo';
 import UserBlock from '../../components/user-block/user-block';
-import { AppRoute } from '../../const';
+import { AppRoute } from '../../consts';
 import { Film } from '../../types/film';
 
 type AddReviewScreenProps = {
@@ -32,7 +32,7 @@ function AddReviewScreen({film}: AddReviewScreenProps): JSX.Element {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <Link to={`${AppRoute.Films}${id}`} className="breadcrumbs__link">The Grand Budapest Hotel</Link>
+                <Link to={`${AppRoute.FILMS}${id}`} className="breadcrumbs__link">The Grand Budapest Hotel</Link>
               </li>
               <li className="breadcrumbs__item">
                 <Link to={location} className="breadcrumbs__link">Add review</Link>

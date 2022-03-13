@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+import { NAVIGATION } from '../../consts';
 import { Film } from '../../types/film';
 
 type PlayerScreenProps = {
@@ -6,12 +8,17 @@ type PlayerScreenProps = {
 
 function PlayerScreen ({film}: PlayerScreenProps): JSX.Element {
   const {posterImage, videoLink, runTime, name} = film;
+  const navigate = useNavigate();
+
+  function onPlayerExit ():void {
+    navigate(NAVIGATION.BACKWARD);
+  }
 
   return (
     <div className="player">
       <video src={videoLink} className="player__video" poster={posterImage}></video>
 
-      <button type="button" className="player__exit">Exit</button>
+      <button type="button" className="player__exit" onClick={onPlayerExit}>Exit</button>
 
       <div className="player__controls">
         <div className="player__controls-row">

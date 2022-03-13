@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { STARS_COUNT } from '../../const';
+import { SETTINGS } from '../../consts';
 import { Comment } from '../../types/comment';
+
 
 type AddReviewFormProps = {
   onReview: (comment: Comment) => void;
@@ -35,7 +36,7 @@ function AddReviewForm (props: AddReviewFormProps):JSX.Element {
       <form action="#" className="add-review__form" onSubmit={formSubmitHandler}>
         <div className="rating">
           <div className="rating__stars">
-            {[...Array(STARS_COUNT).keys()].map((x) => ++x).reverse().map((item) => (
+            {[...Array(SETTINGS.STARS_COUNT).keys()].map((x) => ++x).reverse().map((item) => (
               <>
                 <input className="rating__input" key={item} id={`star-${item}`} type="radio" name="rating" value={item} onChange={ratingChangeHandler}/>
                 <label className="rating__label" htmlFor={`star-${item}`}>Rating {item}</label>
