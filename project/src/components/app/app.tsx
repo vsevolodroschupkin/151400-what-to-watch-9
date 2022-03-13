@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { AppRoute } from '../../consts';
+import { AppRoute, SETTINGS } from '../../consts';
 import AddReviewScreen from '../../pages/add-review-screen/add-review-screen';
 import Error404Screen from '../../pages/error-404-screen/error-404-screen';
 import FilmScreen from '../../pages/film-screen/film-screen';
@@ -16,6 +16,8 @@ type AppScreenProps = {
 };
 
 function App({mainFilm, films}: AppScreenProps): JSX.Element {
+  const authorizationStatus = SETTINGS.AUTHORIZATION_STATUS;
+
   return (
     <BrowserRouter>
       <Routes>
@@ -25,7 +27,7 @@ function App({mainFilm, films}: AppScreenProps): JSX.Element {
         <Route path={AppRoute.PLAYER} element={<PlayerScreen film={mainFilm}/>} />
         <Route path={AppRoute.ADD_REVIEW} element={<AddReviewScreen film={mainFilm} />} />
         <Route path={AppRoute.MY_LIST} element={
-          <PrivateRoute>
+          <PrivateRoute authorizationStatus = {authorizationStatus}>
             <MyListScreen films={films}/>
           </PrivateRoute>
         }

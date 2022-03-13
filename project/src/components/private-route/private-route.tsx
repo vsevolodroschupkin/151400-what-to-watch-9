@@ -3,12 +3,13 @@ import { AppRoute } from '../../consts';
 
 type PrivateRouteProps = {
   children: JSX.Element;
+  authorizationStatus: boolean;
 }
 
-function PrivateRoute ({children}: PrivateRouteProps): JSX.Element {
-  const hasAccess = true;
+function PrivateRoute (props: PrivateRouteProps): JSX.Element {
+  const {authorizationStatus, children} = props;
 
-  return hasAccess ? children : <Navigate to={AppRoute.LOGIN} />;
+  return authorizationStatus ? children : <Navigate to={AppRoute.LOGIN} />;
 }
 
 export default PrivateRoute;

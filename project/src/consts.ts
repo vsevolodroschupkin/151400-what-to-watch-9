@@ -11,9 +11,14 @@ export enum AppRoute {
 export const SETTINGS = {
   STARS_COUNT: 10,
   FILMLIST_INITIAL_STATE: 0,
+  AUTHORIZATION_STATUS: true,
 };
 
 export const NAVIGATION ={
   BACKWARD: -1,
   FORWARD: 1,
 };
+
+export const GENRES = ['All Genres', 'Comedies', 'Crime', 'Documentary', 'Dramas', 'Horror', 'Kids & Family', 'Romance', 'Sci-Fi', 'Thrillers'];
+
+
