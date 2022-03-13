@@ -1,24 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app';
-
-const FILMS_COUNT = 20;
-const MOCK_FILM = {
-  id: 1,
-  genre: 'Drama',
-  date: '2014',
-  title:'The Grand Budapest Hotel',
-};
-
-const MOCK_FILMS_ARRAY = new Array(FILMS_COUNT).fill(MOCK_FILM);
+import { films } from './mocks/films';
 
 const Setting = {
-  mainFilm: MOCK_FILM,
-  films: MOCK_FILMS_ARRAY,
+  MAIN_FILM: films[0],
+  FILMS: films,
 };
 
 ReactDOM.render(
   <React.StrictMode>
-    <App mainFilm = {Setting.mainFilm} films={Setting.films} />
+    <App mainFilm = {Setting.MAIN_FILM} films={Setting.FILMS} />
   </React.StrictMode>,
   document.getElementById('root'));
